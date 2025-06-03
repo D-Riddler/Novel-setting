@@ -1,0 +1,166 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fa;
+}
+
+/* 导航容器 */
+nav {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 主菜单 */
+.nav-list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    height: 48px;
+    align-items: center;
+    position: relative;
+}
+
+/* 导航项 */
+.nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* 导航链接 */
+.nav-link {
+    color: #2d3748;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    padding-right: 30px;
+    /* 为箭头预留空间 */
+}
+
+/* 首页样式 */
+.home-link {
+    background: #f0f4f8;
+    color: #2b6cb0;
+    padding-right: 16px;
+    /* 首页不需要箭头 */
+}
+
+/* 箭头图标 */
+.nav-arrow {
+    position: absolute;
+    right: 12px;
+    /* 固定在右侧 */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    transition: transform 0.2s;
+}
+
+/* 子菜单容器 */
+.submenu {
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 6px 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease-out;
+    z-index: 1000;
+}
+
+/* 二级菜单位置 */
+.nav-item>.submenu {
+    top: calc(100% + 8px);
+    left: 0;
+    transform: translateY(5px);
+}
+
+/* 三级菜单位置修正 */
+.submenu .submenu {
+    top: 0;
+    left: calc(100% - 1px);
+    transform: translateX(5px);
+}
+
+/* 子菜单项 */
+.submenu-item {
+    position: relative;
+}
+
+/* 子菜单链接 */
+.submenu-link {
+    color: #4a5568;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    position: relative;
+    padding-right: 30px;
+    /* 为箭头预留空间 */
+}
+
+/* 悬停显示菜单 */
+.nav-item:hover>.submenu,
+.submenu-item:hover>.submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+/* 箭头动画 */
+.nav-item:hover .nav-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.submenu-item:hover .nav-arrow {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* 交互效果 */
+.nav-link:hover {
+    background: #ebf4ff;
+    color: #2b6cb0;
+}
+
+.submenu-link:hover {
+    background: #f8fafc;
+    color: #2b6cb0;
+    padding-left: 24px;
+}
+
+/* 移除列表标记 */
+.submenu,
+.nav-list {
+    list-style: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .submenu .submenu {
+        left: auto;
+        right: calc(100% - 15px);
+    }
+}
